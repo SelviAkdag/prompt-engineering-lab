@@ -1,0 +1,5 @@
+# Based on llama3.2:3b with increased token limit
+FROM llama3.2:3b
+
+# Increase max tokens from default 128 to 300
+PARAMETER num_predict 300

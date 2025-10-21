@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prompt Engineering Lab – Start Guide</title>
+<style>
+body { 
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; 
+    margin: 2rem; 
+    line-height: 1.6; 
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.kbd { 
+    font-family: monospace; 
+    background: #f6f8fa; 
+    padding: 0.2rem 0.6rem; 
+    border-radius: 4px;
+    border: 1px solid #d0d7de;
+}
+.callout { 
+    padding: 15px 20px; 
+    border-left: 4px solid #3b82f6; 
+    background: #eef6ff; 
+    margin: 1rem 0; 
+    border-radius: 5px;
+}
+.first-time-box {
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    text-align: center;
+}
+.get-started-box {
+    background-color: #fff3cd;
+    border: 3px solid #ffc107;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    text-align: center;
+}
+.nav-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+.nav-button.setup { background-color: #ffc107; color: #212529; }
+.nav-button.lesson { background-color: #17a2b8; }
+.nav-button.verify { background-color: #28a745; }
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0 20px 0;
+}
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+.tech-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.tech-card h4 {
+    margin-top: 0;
+    color: #495057;
+}
+.time-estimate {
+    background-color: #e3f2fd;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+}
+.setup-command {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+.setup-command code {
+    color: #4ec9b0;
+    font-family: 'Courier New', monospace;
+}
+.will-do-box {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+.will-do-box h4 {
+    color: #155724;
+    margin-top: 0;
+}
+.will-do-box ul {
+    color: #155724;
+    margin: 5px 0;
+}
+.option-box {
+  border: 2px solid #6c757d;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+}
+
+.copy-button {
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Prompt Engineering Lab – Start Guide</h1>
+
+<hr>
+
+<h2>Welcome</h2>
+
+<p>
+This mini-course is a self-contained <strong>Jupyter Notebook</strong> that guides you step-by-step through the process of
+<strong>sentiment analysis</strong> using different prompt engineering methods – from <em>zero-shot</em> to <em>self-consistency</em>.
+Read the instructions carefully before opening the notebook <code>notebooks/lesson_all_in_one.ipynb</code>.
+</p>
+
+<!-- FIRST TIME BOX -->
+<div class="first-time-box">
+    <h3 style="color: #1976d2; margin-top: 0;">📘 First time? Read this first!</h3>
+    <p style="margin-bottom: 10px;"><strong>If you haven't set up the environment yet:</strong></p>
+    <ol style="text-align: left; display: inline-block; margin: 15px auto;">
+        <li>Read README.md for instructions on how to extract the files</li>
+        <li>Open the project in VS Code/Cursor (File → Open Folder)</li>
+        <li>Make sure you have Python 3.12 installed</li>
+        <li>Follow the steps below to begin the lesson</li>
+    </ol>
+    <div style="background-color: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 5px; margin-top: 15px;">
+        <strong>💡 Tip:</strong> You can open this page from the terminal with: 
+        <code class="kbd">start index.html</code> (Windows), 
+        <code class="kbd">open index.html</code> (macOS), or 
+        <code class="kbd">xdg-open index.html</code> (Linux)
+    </div>
+</div>
+
+<!-- GET STARTED BOX -->
+<div class="get-started-box">
+    <h2 style="color: #856404; margin-top: 0;">🚀 Get Started Here!</h2>
+    <p style="font-size: 18px; margin-bottom: 20px; color: #856404;">
+        <strong>Follow these steps to complete the course:</strong>
+    </p>
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <button onclick="scrollToSection('what-is-pe')" class="nav-button" style="background-color: #6f42c1; color: white;">
+            What is Prompt Engineering?
+        </button>
+        <button onclick="scrollToSection('setup')" class="nav-button setup">
+            Environment Setup
+        </button>
+        <button onclick="scrollToSection('lesson-start')" class="nav-button lesson">
+            Start Lesson
+        </button>
+        <button onclick="scrollToSection('verification')" class="nav-button verify">
+            Verification
+        </button>
+    </div>
+</div>
+
+<div class="time-estimate">
+    ⏱️ Estimated time: 30 minutes of active work
+</div>
+
+<!-- WHAT IS PROMPT ENGINEERING SECTION -->
+<h2 id="what-is-pe">What is Prompt Engineering?</h2>
+
+<p>
+<strong>Prompt Engineering</strong> is the art and science of designing effective instructions (prompts) 
+for language models to achieve the best possible results. It involves understanding how models "think" 
+and using the right techniques to guide them toward correct answers.
+</p>
+
+<h3>🎯 Why is it important?</h3>
+<ul>
+    <li><strong>Better results:</strong> Well-designed prompts can dramatically improve model performance</li>
+    <li><strong>Cost efficiency:</strong> Good prompts can achieve better results with smaller/cheaper models</li>
+    <li><strong>Reliability:</strong> Consistent prompts lead to more predictable and reliable outputs</li>
+    <li><strong>Task-specific optimization:</strong> Different tasks require different prompting strategies</li>
+</ul>
+
+<h3>📘 What you will learn</h3>
+<p>
+You will explore how large language models handle <strong>sentiment classification</strong> – deciding whether a movie review expresses a <em>positive</em> or <em>negative</em> emotion.
+Throughout the notebook, you will apply and compare the following prompting techniques:
+</p>
+
+<ul>
+  <li><strong>Zero-shot</strong> – asking the model directly without any examples.</li>
+  <li><strong>Few-shot</strong> – providing a few labeled examples before the task.</li>
+  <li><strong>Chain-of-Thought (CoT)</strong> – encouraging the model to reason step-by-step before answering.</li>
+  <li><strong>Self-consistency</strong> – running multiple reasoning paths and choosing the most consistent outcome.</li>
+</ul>
+
+<h3>🧩 About the dataset</h3>
+<p>
+The dataset consists of short movie reviews paired with sentiment labels (<code>positive</code> or <code>negative</code>).
+It's designed to be small and easy to experiment with – perfect for testing how different prompting strategies affect model reasoning and performance.
+</p>
+
+<h3>🎯 Your tasks</h3>
+<ol>
+  <li><strong>Understand the dataset:</strong> Explore the movie reviews and think about what linguistic cues signal positivity or negativity.</li>
+  <li><strong>Run and compare the methods:</strong> Test zero-shot, few-shot, CoT, and self-consistency prompts and observe how accuracy and reasoning differ.</li>
+  <li><strong>Experiment interactively:</strong> Try writing your own example reviews or related questions to see how the model responds under each method.</li>
+  <li><strong>Reflect and analyze:</strong> Consider which approach generalizes best, and why.</li>
+</ol>
+
+<h3>⭐ Grading and evaluation</h3>
+<p>
+Each section in the notebook includes short exercises or evaluation cells.
+Your progress is tracked automatically using <code>progress/lesson_progress.json</code>.
+When you have completed all parts, run the validator script <code>src/verify.py</code> to check your work.
+</p>
+
+<p>The validator ensures that:</p>
+<ul>
+  <li>All four methods (zero-shot, few-shot, chain-of-thought, and self-consistency) have been executed.</li>
+  <li>Each method reports the metrics <code>accuracy</code>, <code>precision</code>, <code>recall</code>, and <code>F1-score</code>.</li>
+  <li>At least one of the methods achieves accuracy ≥ 60%.</li>
+  <li>All quiz and reflection answers have been completed.</li>
+</ul>
+
+<p>
+  If everything passes successfully, you'll see:<br>
+  <code>PASS: All checks passed ✅</code><br>
+  Otherwise, the script will print clear instructions on what needs to be fixed.
+  </p>
+
+<!-- SETUP SECTION -->
+<div id="setup" class="section-header">
+    <h2 style="margin: 0;">⚙️ Environment Setup</h2>
+</div>
+
+<div class="callout">
+    <strong>Target environment:</strong> Windows using a Bash terminal (Git Bash, Windows Terminal with Bash). 
+    The instructions below are tuned for this workflow.
+</div>
+
+<h3>1.1 Python Environment Setup (Windows Bash)</h3>
+
+<h4>Open terminal in VS Code/Cursor:</h4>
+<ul>
+    <li>Press <code class="kbd">Ctrl+Shift+`</code> (backtick) or go to View → Terminal</li>
+    <li>Make sure you're in the project folder (you should see <code>index.html</code>, <code>requirements.txt</code>)</li>
+</ul>
+
+<h4>🚀 Quick Setup - Automated Script</h4>
+
+<div style="background-color: #f8f9fa; border: 2px solid #28a745; padding: 20px; border-radius: 10px; margin: 20px 0;">
+    <h4 style="margin-top: 0;">📋 Copy setup command</h4>
+    
+    <button onclick="copySetupCommand()" style="background-color: #2196F3; color: white; border: none; padding: 15px 30px; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin: 10px 0; width: 100%; max-width: 400px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <span style="font-size: 20px;">💻</span>
+        <span>Windows (Git Bash/WSL)</span>
+    </button>
+    
+    <div class="will-do-box" style="margin-top: 15px;">
+        <h4>✨ This script will automatically:</h4>
+        <ul>
+            <li>✅ Make scripts executable</li>
+            <li>✅ Create a virtual environment (.venv)</li>
+            <li>✅ Activate the environment (you'll see <code>(.venv)</code> in terminal)</li>
+            <li>✅ Upgrade pip to the latest version</li>
+            <li>✅ Install all required dependencies from requirements.txt</li>
+            <li>✅ Copy .env.example to .env with Ollama as default backend</li>
+            <li>✅ Create `Modelfile` for extended token limit (300 tokens)</li>
+        </ul>
+    </div>
+    
+    <p style="margin-top: 15px; color: #666;">
+        <strong>How to use:</strong> Click the button above to copy, then paste (Ctrl+V or right-click → Paste) into your Git Bash terminal and press Enter.
+    </p>
+</div>
+
+<h4>📝 Manual Setup (if script doesn't work)</h4>
+
+<p>If the automated setup fails, follow these steps manually:</p>
+
+<ol>
+  <li><strong>Create virtual environment</strong><br>
+    <code class="kbd">python -m venv .venv</code></li>
+  <li><strong>Activate virtual environment</strong> (try first command; if it fails use the second):<br>
+    <code class="kbd">source .venv/Scripts/activate</code><br>
+    or<br>
+    <code class="kbd">source .venv/bin/activate</code></li>
+  <li><strong>Upgrade pip and install requirements</strong><br>
+    <code class="kbd">python.exe -m pip install --upgrade pip</code><br>
+    <code class="kbd">pip install -r requirements.txt</code></li>
+  <li><strong>Copy environment template</strong><br>
+    <code class="kbd">cp .env.example .env</code><br>
+    <em>Default setting uses Ollama. Edit .env if you want to use OpenAI API.</em></li>
+</ol>
+
+<h3>1.2 Local Model Setup (Required)</h3>
+
+<div class="callout" style="background:#fff9db; border-left-color:#f59e0b;">
+  <strong>⚠️ Important:</strong> This lesson requires a running LLM. 
+  Choose <strong>Ollama</strong> (free, local) or <strong>OpenAI API</strong> (paid).
+</div>
+
+<h4>Option 1: Ollama (Recommended) ✅</h4>
+
+<p>Ollama runs models locally on your computer - completely free and private.</p>
+
+<ol>
+  <li><strong>Install Ollama:</strong><br>
+    Download from <a href="https://ollama.ai/download" target="_blank">https://ollama.ai/download</a><br>
+    Or via package manager:
+    <ul>
+      <li>Windows: <code class="kbd">winget install Ollama.Ollama</code></li>
+      <li>Mac: <code class="kbd">brew install ollama</code></li>
+      <li>Linux: <code class="kbd">curl -fsSL https://ollama.ai/install.sh | sh</code></li>
+    </ul>
+  </li>
+  <li><strong>Add Ollama to PATH (Windows):</strong><br>
+    If <code>ollama</code> is not recognized in terminal:
+    <ol style="margin-left: 20px;">
+      <li>Open "Edit system environment variables" (search in Start menu)</li>
+      <li>Click "Environment Variables..." at the bottom</li>
+      <li>Under "System variables", find and double-click "Path"</li>
+      <li>Click "New" and add: <code>C:\Users\YourUsername\AppData\Local\Programs\Ollama</code></li>
+      <li>Click OK on all windows</li>
+      <li><strong>Restart VS Code/Cursor</strong> for PATH to update</li>
+    </ol>
+  </li>
+  <li><strong>Download the model:</strong><br>
+    <code class="kbd">ollama pull llama3.2:3b</code><br>
+    <em>(Downloads ~2GB, takes a few minutes)</em>
+  </li>
+  <li><strong>Create extended token model:</strong><br>
+    <code class="kbd">ollama create llama3.2-long -f Modelfile</code><br>
+    <em>(This creates a custom model with 300 token limit instead of default 128)</em><br>
+    <strong>Note:</strong> The Modelfile was auto-created during setup.
+  </li>
+  <li><strong>Verify installation:</strong><br>
+    <code class="kbd">ollama list</code><br>
+    You should see both <code>llama3.2:3b</code> and <code>llama3.2-long</code> in the list.
+  </li>
+  <li><strong>Verify .env configuration:</strong><br>
+    Make sure your <code>.env</code> file contains:<br>
+    <code class="kbd">MODEL_BACKEND=ollama</code><br>
+    <code class="kbd">OLLAMA_MODEL=llama3.2-long</code>
+</li>
+</ol>
+
+<h4>Option 2: OpenAI API (Alternative) 💳</h4>
+
+<p>Use OpenAI if you prefer cloud-based inference (costs ~$0.01-0.05 per lesson run).</p>
+<ol>
+  <li><strong>Get API key:</strong> <a href="https://platform.openai.com/api-keys" target="_blank">https://platform.openai.com/api-keys</a></li>
+  <li><strong>Set environment variables in <code>.env</code>:</strong><br>
+    <code class="kbd">MODEL_BACKEND=openai</code><br>
+    <code class="kbd">OPENAI_API_KEY=sk-your-key-here</code>
+  </li>
+</ol>
+
+<div class="callout">
+  <strong>Recommendation:</strong> Use Ollama for this lesson. It's free, fast enough, 
+  and you don't need to manage API keys or worry about costs.
+</div>
+
+<h3>Test your LLM setup</h3>
+<p>Before starting the notebook, verify that your LLM backend works:</p>
+
+<h4>Test Ollama (base model):</h4>
+<pre><code class="kbd">ollama run llama3.2:3b</code></pre>
+<p>You should get an interactive prompt. Type something like "Hello" and press Enter. 
+Type <code>/bye</code> to exit.</p>
+
+<h4>Test extended model (used in lesson):</h4>
+<pre><code class="kbd">ollama run llama3.2-long</code></pre>
+<p>This verifies that your custom model with extended token limit works correctly.</p>
+
+<h4>Test Python integration:</h4>
+<pre><code class="kbd">python -c "from src.llm import call_llm; print(call_llm('Hello', max_tokens=10))"</code></pre>
+<p>You should see a response tuple like: <code>('Hello! How are you?', {...})</code></p>
+
+<div class="callout" style="background:#fee2e2; border-left-color:#ef4444;">
+  <strong>Troubleshooting:</strong><br>
+  <strong>Error: "Cannot connect to Ollama"</strong><br>
+  → Make sure Ollama is running. On Windows, check the system tray for the Ollama icon. 
+  Or start it manually with <code>ollama serve</code><br>
+  <br>
+  <strong>Error: "MODEL_BACKEND is 'openai' but OPENAI_API_KEY is not set"</strong><br>
+  → Add your OpenAI API key to the <code>.env</code> file, or switch to <code>MODEL_BACKEND=ollama</code>
+</div>
+
+<!-- START LESSON SECTION -->
+<div id="lesson-start" class="section-header">
+  <h2 style="margin: 0;">📚 Start the Lesson</h2>
+</div>
+
+<h3>Open Jupyter Notebook</h3>
+
+<p><strong>Make sure your virtual environment is activated</strong> (you should see <code>(.venv)</code> in the terminal).</p>
+
+<div class="callout" style="background:#fff9db; border-left-color:#f59e0b;">
+  <strong>⚠️ Two options:</strong> You can open the notebook in two ways. Choose what works best for you!
+</div>
+
+<!-- OPTION A: BROWSER -->
+<div class="option-box" style="border-color: #17a2b8;">
+  <h4>🌐 Option A: Open in Browser (Jupyter Notebook)</h4>
+  <p><strong>Recommended for:</strong> First-time Jupyter users, or if you want the classic Jupyter experience.</p>
+  
+  <div style="background-color: #f8f9fa; border: 2px solid #17a2b8; padding: 20px; border-radius: 10px; margin: 15px 0;">
+    <h4 style="margin-top: 0;">📋 Copy command to start notebook</h4>
+    <button onclick="copyRunLessonCommand()" class="copy-button" style="background-color: #17a2b8;">
+        <span style="font-size: 20px;">🚀</span>
+        <span>Copy Start Command</span>
+    </button>
+    <p style="margin-top: 15px; font-size: 14px; color: #666; text-align: center;">
+      Click button above → Paste in terminal → Press Enter → Notebook opens!
+  </p>
+</div>
+
+  <div class="will-do-box">
+      <h4>💡 What will happen:</h4>
+      <ul>
+          <li>🌐 Jupyter opens automatically in your default web browser</li>
+          <li>📂 The notebook file <code>lesson_all_in_one.ipynb</code> opens directly</li>
+          <li>🎯 You see all lesson sections and can start working</li>
+          <li>💾 All changes are saved automatically</li>
+      </ul>
+  </div>
+
+  <h4>⚙️ Next steps in Jupyter Notebook UI:</h4>
+  <ol>
+      <li>
+          <strong>Select the correct kernel:</strong><br>
+          Click <code class="kbd">Kernel → Change kernel</code> and select the Python environment from <code>.venv</code><br>
+          <em>(You should see something like "Python 3.12 (.venv)" in the list)</em>
+      </li>
+      <li>
+          <strong>Start working through the lesson:</strong><br>
+          Follow the notebook cells in order from top to bottom
+      </li>
+  </ol>
+</div>
+
+<!-- OPTION B: VS CODE -->
+<div class="option-box" style="border-color: #007acc;">
+  <h4>💻 Option B: Open in VS Code/Cursor</h4>
+  <p><strong>Recommended for:</strong> If you're comfortable with VS Code/Cursor and want everything in one editor.</p>
+  
+  <h4>📝 Step-by-step:</h4>
+  <ol>
+      <li>
+          <strong>Open the file:</strong><br>
+          In VS Code/Cursor file explorer, navigate to <code>notebooks/lesson_all_in_one.ipynb</code> and click on it
+      </li>
+      <li>
+          <strong>Select the correct Python interpreter:</strong><br>
+          <ul>
+              <li>Click "Select Kernel" in the top-right corner of the notebook</li>
+              <li>Choose "Python Environments..."</li>
+              <li>Select Python from <code>.venv</code> (should show Python 3.12)</li>
+          </ul>
+          <em>Alternative: Press <code class="kbd">Ctrl+Shift+P</code> → type "Python: Select Interpreter" → select .venv</em>
+      </li>
+      <li>
+          <strong>Start working through the lesson:</strong><br>
+          Follow the notebook cells in order from top to bottom
+      </li>
+  </ol>
+
+  <div class="will-do-box">
+      <h4>💡 Benefits of VS Code/Cursor:</h4>
+      <ul>
+          <li>✅ Everything in one editor - no window switching</li>
+          <li>✅ IntelliSense and code completion built-in</li>
+          <li>✅ Git integration included</li>
+          <li>✅ Terminal and notebook in the same view</li>
+      </ul>
+  </div>
+</div>
+
+<div class="callout" style="background:#e8f4f8; border-left-color:#17a2b8;">
+  <strong>💡 About kernels:</strong> A "kernel" is the Python environment that runs your code. 
+  It's important to select the kernel from <code>.venv</code> so that all the packages you installed are used.
+  If you see error messages about missing packages, you've probably selected the wrong kernel!
+</div>
+
+<h3>What you'll get in the notebook:</h3>
+
+<p>The notebook contains the following interactive elements:</p>
+
+<ul style="list-style: none; padding-left: 0;">
+  <li style="padding: 8px 0; font-size: 16px;">✅ <strong>Interactive Quizzes</strong> - Clickable radio buttons to select answers</li>
+  <li style="padding: 8px 0; font-size: 16px;">💡 <strong>Hint Buttons</strong> - Get help when you're stuck</li>
+  <li style="padding: 8px 0; font-size: 16px;">📊 <strong>Immediate Feedback</strong> - See instantly if your answer is correct</li>
+  <li style="padding: 8px 0; font-size: 16px;">🎯 <strong>Metrics & Comparisons</strong> - See accuracy for each method</li>
+  <li style="padding: 8px 0; font-size: 16px;">💾 <strong>Automatic Saving</strong> - Your progress is saved continuously</li>
+  <li style="padding: 8px 0; font-size: 16px;">🔄 <strong>Experimentation</strong> - Change prompts and see what happens</li>
+</ul>
+
+<h3>Workflow in Notebook</h3>
+
+<div class="callout">
+  <p><strong>How to work through the lesson:</strong></p>
+  <ol>
+      <li><strong>Read</strong> theory and explanations in markdown cells</li>
+      <li><strong>Run</strong> code cells with "Run" or <code class="kbd">Shift+Enter</code></li>
+      <li><strong>Experiment</strong> with changing prompts and see what happens</li>
+      <li><strong>Answer</strong> quiz questions and interactive exercises</li>
+      <li><strong>Compare</strong> results between different techniques</li>
+  </ol>
+</div>
+
+<!-- VERIFICATION SECTION -->
+<div id="verification" class="section-header">
+  <h2 style="margin: 0;">✅ Verification</h2>
+</div>
+
+<h3>🔍 Verify Your Work</h3>
+
+<p>When you've completed the notebook, verify your work using one of these methods:</p>
+
+<div class="callout" style="background:#fff9db; border-left-color:#f59e0b;">
+  <strong>⚠️ Two options:</strong> Choose based on how you're running the notebook.
+</div>
+
+<!-- OPTION A: TERMINAL -->
+<div class="option-box" style="border-color: #28a745;">
+  <h4>🖥️ Option A: Run verification from terminal</h4>
+  <p><strong>Use if:</strong> You opened the notebook in a web browser, or prefer using the terminal.</p>
+  
+  <div class="setup-command">
+      <code>python src/verify.py</code>
+  </div>
+
+  <div class="will-do-box">
+      <h4>🔎 What the verification checks:</h4>
+      <ul>
+          <li>✅ All four methods (zero-shot, few-shot, CoT, self-consistency) have been executed</li>
+          <li>✅ Each method reports metrics: accuracy, precision, recall, F1-score</li>
+          <li>✅ At least one method achieves accuracy ≥ 60%</li>
+          <li>✅ All quiz questions are answered</li>
+          <li>✅ Reflection answers are completed</li>
+      </ul>
+  </div>
+
+  <p>
+  If all checks pass, you'll see:<br>
+  <code style="color: #28a745; font-weight: bold;">PASS: All checks passed ✅</code>
+  </p>
+</div>
+
+<!-- OPTION B: VS CODE NOTEBOOK -->
+<div class="option-box" style="border-color: #007acc;">
+  <h4>📓 Option B: Run verification inside VS Code/Cursor notebook</h4>
+  <p><strong>Use if:</strong> You opened the notebook directly in VS Code/Cursor.</p>
+  
+  <h4>📝 Instructions:</h4>
+  <ol>
+      <li>
+          <strong>Scroll to the last section of the notebook:</strong><br>
+          Look for the section titled <strong>"Progress Tracker"</strong>
+      </li>
+      <li>
+          <strong>Run the final cell:</strong><br>
+          Execute the last code cell which contains the verification logic
+      </li>
+      <li>
+          <strong>Check the output:</strong><br>
+          Results will display directly in the notebook cell output
+      </li>
+  </ol>
+
+  <div class="will-do-box">
+      <h4>💡 What you'll see:</h4>
+      <ul>
+          <li>✅ Green checkmarks for passed tests</li>
+          <li>❌ Red X marks for failed tests with instructions</li>
+          <li>📊 Score summary showing your progress</li>
+          <li>💾 JSON receipt file saved to <code>progress/receipt.json</code></li>
+      </ul>
+  </div>
+</div>
+
+<h3>📄 Understanding the Receipt</h3>
+
+<p>After verification, a JSON receipt is generated at <code>progress/receipt.json</code> containing:</p>
+<ul>
+    <li><strong>Overall status:</strong> PASS or FAIL</li>
+    <li><strong>Individual test results:</strong> Details for each check</li>
+    <li><strong>Score:</strong> Your points out of maximum possible</li>
+    <li><strong>Timestamp:</strong> When the verification was run</li>
+    <li><strong>Metrics:</strong> Performance data for each prompting method</li>
+</ul>
+
+<div class="callout" style="background:#d4edda; border-left-color:#28a745;">
+    <strong>✅ Success criteria:</strong><br>
+    You pass when all required methods are executed with metrics, 
+    at least one method achieves ≥60% accuracy, and all quiz/reflection questions are answered.
+</div>
+
+<!-- TROUBLESHOOTING SECTION -->
+<div id="troubleshooting" class="section-header">
+    <h2 style="margin: 0;">🔧 Troubleshooting</h2>
+</div>
+
+<div class="callout" style="background:#fff3cd; border-left-color:#ffc107;">
+    <h3 style="margin-top: 0;">Common Issues & Solutions</h3>
+    
+    <p><strong>Issue: "ModuleNotFoundError" or package import errors</strong></p>
+    <p><strong>Solution:</strong> Make sure you've selected the correct kernel from <code>.venv</code>. In Jupyter, go to Kernel → Change kernel. In VS Code, click "Select Kernel" in the top-right.</p>
+    
+    <p><strong>Issue: "Cannot connect to Ollama"</strong></p>
+    <p><strong>Solution:</strong> Make sure Ollama is running. Check the system tray for the Ollama icon, or start it with <code>ollama serve</code> in a terminal.</p>
+    
+    <p><strong>Issue: "Model llama3.2:3b not found"</strong></p>
+    <p><strong>Solution:</strong> Download the model with: <code>ollama pull llama3.2:3b</code></p>
+    
+    <p><strong>Issue: "Ollama not found"</strong></p>
+    <p><strong>Solution:</strong> Add Ollama to PATH (see instructions above) and restart the terminal</p>
+    
+    <p><strong>Issue: Jupyter doesn't open in VS Code</strong></p>
+    <p><strong>Solution:</strong> Use the command above to open in browser instead</p>
+    
+    <p><strong>Issue: Virtual environment not activating</strong></p>
+    <p><strong>Solution:</strong> Try the alternative activation command: <code>source .venv/bin/activate</code> instead of <code>source .venv/Scripts/activate</code></p>
+    
+    <p><strong>Issue: Setup script fails</strong></p>
+    <p><strong>Solution:</strong> Follow the manual setup steps listed in section 1.1</p>
+</div>
+
+<!-- RESOURCES SECTION -->
+<h2>📚 Additional Resources</h2>
+
+<div class="callout">
+    <h3 style="margin-top: 0;">Learn more about Prompt Engineering:</h3>
+    <ul>
+        <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank">OpenAI's Prompt Engineering Guide</a></li>
+        <li><a href="https://docs.anthropic.com/claude/docs/prompt-engineering" target="_blank">Anthropic's Prompt Engineering</a></li>
+        <li><a href="https://www.promptingguide.ai/" target="_blank">Prompt Engineering Guide</a></li>
+        <li><a href="https://arxiv.org/abs/2201.11903" target="_blank">Chain-of-Thought Paper</a></li>
+        <li><a href="https://arxiv.org/abs/2203.11171" target="_blank">Self-Consistency Paper</a></li>
+    </ul>
+</div>
+
+<div class="callout" style="border-left-color: #28a745; background: #d4edda; text-align: center;">
+  <h2 style="margin-top: 0; color: #155724;">🎉 Good Luck!</h2>
+  <p style="margin: 0; color: #155724; font-size: 16px;">
+      You now have all the information you need to begin. Follow the steps above in order, 
+      and don't hesitate to use the hint features in the notebook if you get stuck!
+  </p>
+</div>
+
+<hr style="margin: 40px 0;">
+<p style="text-align: center; color: #666;">
+    Prompt Engineering Lab | Apache 2.0 License
+</p>
+
+<script>
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function copySetupCommand() {
+    const command = 'source setup.sh';
+    
+    navigator.clipboard.writeText(command).then(function() {
+        alert('✅ Setup command copied to clipboard!\n\nNow paste it into your Git Bash terminal and press Enter.');
+    }, function(err) {
+        alert('❌ Could not copy command. Please copy it manually:\n\nsource setup.sh');
+    });
+}
+
+function copyRunLessonCommand() {
+  const command = 'bash run_lesson.sh';
+  
+  navigator.clipboard.writeText(command).then(function() {
+      alert('✅ Copied: bash run_lesson.sh\n\nPaste it in your terminal and press Enter!');
+  }, function(err) {
+      alert('❌ Copy failed. Type this in terminal:\n\nbash run_lesson.sh');
+  });
+}
+</script>
+
+</body>
+</html>
