@@ -232,7 +232,7 @@ By completing this lesson, you will:
 2. Run the setup script:
 
 ```bash
-./scripts/setup_venv.sh
+source setup.sh
 ```
 
 **What this does:**
