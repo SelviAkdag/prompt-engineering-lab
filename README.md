@@ -763,7 +763,7 @@ After completing this lab, consider:
 
 - **Discord**: @selvi_45396
 - **Email**: selvi.akdag@hotmail.com
-- **GitHub Issues**: [Report bugs or request features](https://github.com/YOUR-USERNAME/prompt-engineering-lab/issues)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/SelviAkdag/prompt-engineering-lab/issues)
 
 ### Reporting Issues
 
