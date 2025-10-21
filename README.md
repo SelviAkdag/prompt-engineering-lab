@@ -17,7 +17,7 @@ cd prompt-engineering-lab
 
 ### Option 2: Download ZIP
 
-1. Download the ZIP file from the [releases page](https://github.com/SelviAkdag/prompt-engineering-lab/releases) or course materials
+1. Download the ZIP file from the [releases page](https://github.com/SelviAkdag/prompt-engineering-lab/releases) 
 2. Extract the ZIP file to your preferred location
 3. Open terminal/command prompt in the extracted folder
 
