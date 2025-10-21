@@ -15,6 +15,8 @@ git clone https://github.com/SelviAkdag/prompt-engineering-lab.git
 cd prompt-engineering-lab
 ```
 
+**→ After cloning, continue to Step 2 below**
+
 ### Option 2: Download ZIP
 
 1. Download the ZIP file from the [releases page](https://github.com/SelviAkdag/prompt-engineering-lab/releases) 
@@ -26,6 +28,8 @@ cd prompt-engineering-lab
 ## 🚀 Quick Start — Begin Here!
 
 ### Step 1: Extract the ZIP file
+
+**⚠️ Skip this step if you used `git clone` above**
 
 You've downloaded a ZIP file for this lesson (usually in your Downloads folder).
 
